@@ -24,7 +24,7 @@ const routes: Routes = [
 
     /* START MY VIEWS */
 
-    { path: 'grids',  loadChildren: './pages/grid-list/grid-list.module#GridListModule' , canActivate: [AuthGuard] },
+    { path: 'grids',  loadChildren: './pages/grid-list/grid-list.module#GridListModule'  },
 
  /* END MY VIEWS */
 
