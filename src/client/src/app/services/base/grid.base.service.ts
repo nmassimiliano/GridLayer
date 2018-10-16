@@ -68,6 +68,17 @@ export class GridBaseService {
     // CRUD METHODS
 
     /**
+    * GridService.create
+    *   @description CRUD ACTION create
+    *
+    */
+    create(item: Grid): Observable<Grid> {
+        return this.http
+            .post<Grid>(this.contextUrl, item)
+            .pipe(map(data => data));
+    }
+
+    /**
     * GridService.delete
     *   @description CRUD ACTION delete
     *   @param ObjectId id Id
@@ -80,6 +91,18 @@ export class GridBaseService {
     }
 
     /**
+    * GridService.get
+    *   @description CRUD ACTION get
+    *   @param ObjectId id Id 
+    *
+    */
+    get(id: string): Observable<Grid> {
+        return this.http
+            .get<Grid>(this.contextUrl + '/' + id)
+            .pipe(map(data => data));
+    }
+
+    /**
     * GridService.list
     *   @description CRUD ACTION list
     *
@@ -87,6 +110,18 @@ export class GridBaseService {
     list(): Observable<Grid[]> {
         return this.http
             .get<Grid[]>(this.contextUrl)
+            .pipe(map(data => data));
+    }
+
+    /**
+    * GridService.update
+    *   @description CRUD ACTION update
+    *   @param ObjectId id Id
+    *
+    */
+    update(item: Grid): Observable<Grid> {
+        return this.http
+            .post<Grid>(this.contextUrl + '/' + item._id, item)
             .pipe(map(data => data));
     }
 

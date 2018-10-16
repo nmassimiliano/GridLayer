@@ -22,12 +22,36 @@ public class GridBaseController {
 
 //CRUD METHODS
 
+
+    //CRUD - CREATE
+    @Secured({ "ROLE_PRIVATE_USER" })
+		@RequestMapping(value = "/grids", method = RequestMethod.POST, headers = "Accept=application/json")
+	public Grid insert(@RequestBody Grid obj) {
+		Grid result = gridService.insert(obj);
+
+	    
+		
+		return result;
+	}
+
 	
     //CRUD - REMOVE
     @Secured({ "ROLE_PRIVATE_USER" })
 	@RequestMapping(value = "/grids/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
 	public void delete(@PathVariable("id") Long id) {
 		gridService.delete(id);
+	}
+	
+	
+    //CRUD - GET ONE
+    @Secured({ "ROLE_PRIVATE_USER" })
+	@RequestMapping(value = "/grids/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public Grid get(@PathVariable Long id) {
+		Grid obj = gridService.get(id);
+		
+		
+		
+		return obj;
 	}
 	
 	
@@ -38,6 +62,18 @@ public class GridBaseController {
 		return gridService.getList();
 	}
 	
+	
+
+    //CRUD - EDIT
+    @Secured({ "ROLE_PRIVATE_USER" })
+	@RequestMapping(value = "/grids/{id}", method = RequestMethod.POST, headers = "Accept=application/json")
+	public Grid update(@RequestBody Grid obj, @PathVariable("id") Long id) {
+		Grid result = gridService.update(obj, id);
+
+	    
+		
+		return result;
+	}
 	
 
 

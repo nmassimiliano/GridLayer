@@ -5,7 +5,7 @@ import { CanActivate, RouterModule, Routes } from '@angular/router';
 /* START MY VIEWS IMPORT */
 // Do not edit this comment content, it will be overwritten in next Skaffolder generation
 import { HomeComponent} from './pages/home/home.component';
-import { GridListComponent} from './pages/grid-list/grid-list.component';
+import { GridEditComponent} from './pages/grid-edit/grid-edit.component';
 
 /* END MY VIEWS IMPORT */
 
@@ -24,7 +24,7 @@ const routes: Routes = [
 
     /* START MY VIEWS */
 
-    { path: 'grids',  loadChildren: './pages/grid-list/grid-list.module#GridListModule'  },
+    { path: 'grids/:id',  loadChildren: './pages/grid-edit/grid-edit.module#GridEditModule' , canActivate: [AuthGuard] },
 
  /* END MY VIEWS */
 
